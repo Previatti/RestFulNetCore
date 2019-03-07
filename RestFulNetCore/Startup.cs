@@ -36,7 +36,7 @@ namespace RestFulNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = _configuration["MySqlConnection:MySqlConnectionString"];
-            services.AddDbContext<MySqlContext>(options => options.UseMySql(connectionString));
+            services.AddDbContext<MySQLContext>(options => options.UseMySql(connectionString));
 
             if (_hostingEnvironment.IsDevelopment()) 
             {

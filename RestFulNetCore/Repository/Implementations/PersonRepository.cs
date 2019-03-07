@@ -10,9 +10,9 @@ namespace RestFulNetCore.Repository.Implementations
     public class PersonRepository : IPersonRepository
     {
         private volatile int count;
-        private readonly MySqlContext _context;
+        private readonly MySQLContext _context;
 
-        public PersonRepository(MySqlContext context)
+        public PersonRepository(MySQLContext context)
         {
             _context = context;
         }
