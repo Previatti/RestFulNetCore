@@ -19,10 +19,6 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="db\" />
-  </ItemGroup>
-
 <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
   <ItemGroup>
     <ReferencePath Condition="'%(FileName)' == 'MySqlConnector'">

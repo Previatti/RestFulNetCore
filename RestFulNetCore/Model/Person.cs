@@ -1,4 +1,4 @@
-﻿using RestWithASPNETUdemy.Model.Base;
+﻿using RestFulNetCore.Model.Base;
 
 namespace RestFulNetCore.Model
 {

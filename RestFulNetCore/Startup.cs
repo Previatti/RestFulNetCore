@@ -16,21 +16,22 @@ using RestFulNetCore.Business;
 using RestFulNetCore.Business.Implementations;
 using RestFulNetCore.Repository;
 using RestFulNetCore.Repository.Implementations;
+using RestFulNetCore.Repository.Generic;
 
 namespace RestFulNetCore
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, ILogger logger, IHostingEnvironment hostingEnvironment)
+        private readonly ILogger _logger;
+        public IConfiguration _configuration { get; }
+        public IHostingEnvironment _environment { get; }
+
+        public Startup(IConfiguration configuration, IHostingEnvironment environment, ILogger<Startup> logger)
         {
             _configuration = configuration;
+            _environment = environment;
             _logger = logger;
-            _hostingEnvironment = hostingEnvironment;
         }
-
-        public IConfiguration _configuration { get; }
-        private readonly ILogger _logger;
-        public readonly IHostingEnvironment _hostingEnvironment;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -38,7 +39,7 @@ namespace RestFulNetCore
             var connectionString = _configuration["MySqlConnection:MySqlConnectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connectionString));
 
-            if (_hostingEnvironment.IsDevelopment()) 
+            if (_environment.IsDevelopment()) 
             {
                 try
                 {
@@ -65,6 +66,9 @@ namespace RestFulNetCore
             //DEPENDENCY INJECTOR
             services.AddScoped<IPersonBusiness, PersonBusiness>();
             services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<IBookBusiness, BookBusiness>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

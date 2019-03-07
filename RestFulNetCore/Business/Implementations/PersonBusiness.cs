@@ -1,6 +1,7 @@
 ﻿using RestFulNetCore.Model;
 using RestFulNetCore.Model.Context;
 using RestFulNetCore.Repository;
+using RestFulNetCore.Repository.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace RestFulNetCore.Business.Implementations
     public class PersonBusiness : IPersonBusiness
     {
         private volatile int count;
-        private readonly IPersonRepository _repository;
+        private readonly IRepository<Person> _repository;
 
-        public PersonBusiness(IPersonRepository repository)
+        public PersonBusiness(IRepository<Person> repository)
         {
             _repository = repository;
         }
