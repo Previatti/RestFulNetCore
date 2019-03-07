@@ -4,7 +4,8 @@ using RestFulNetCore.Services;
 
 namespace RestFulNetCore.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("api/[controller]/v{version:apiVersion}")]
     [ApiController]
     public class PersonsController : ControllerBase
     {
@@ -14,8 +15,7 @@ namespace RestFulNetCore.Controllers
         {
             _personService = personService;
         }
-
-        // GET api/values
+    
         [HttpGet]
         public IActionResult Get()
         {

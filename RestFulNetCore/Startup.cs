@@ -34,6 +34,8 @@ namespace RestFulNetCore
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddApiVersioning();
+
             //DEPENDENCY INJECTOR
             services.AddScoped<IPersonService, PersonServiceImplementation>();
         }

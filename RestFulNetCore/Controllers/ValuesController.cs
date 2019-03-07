@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RestFulNetCore.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("api/[controller]/v{version:apiVersion}")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
