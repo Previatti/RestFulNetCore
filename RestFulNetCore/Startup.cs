@@ -12,8 +12,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RestFulNetCore.Model.Context;
-using RestFulNetCore.Services;
-using RestFulNetCore.Services.Implementations;
+using RestFulNetCore.Business;
+using RestFulNetCore.Business.Implementations;
+using RestFulNetCore.Repository;
+using RestFulNetCore.Repository.Implementations;
 
 namespace RestFulNetCore
 {
@@ -37,7 +39,8 @@ namespace RestFulNetCore
             services.AddApiVersioning();
 
             //DEPENDENCY INJECTOR
-            services.AddScoped<IPersonService, PersonServiceImplementation>();
+            services.AddScoped<IPersonBusiness, PersonBusiness>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

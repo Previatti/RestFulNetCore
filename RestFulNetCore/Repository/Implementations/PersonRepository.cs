@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
-namespace RestFulNetCore.Services.Implementations
+namespace RestFulNetCore.Repository.Implementations
 {
-    public class PersonServiceImplementation : IPersonService
+    public class PersonRepository : IPersonRepository
     {
         private volatile int count;
         private readonly MySqlContext _context;
 
-        public PersonServiceImplementation(MySqlContext context)
+        public PersonRepository(MySqlContext context)
         {
             _context = context;
         }
@@ -104,9 +104,10 @@ namespace RestFulNetCore.Services.Implementations
             return person;
         }
 
-        private bool Exists(long? id)
+        public bool Exists(long? id)
         {
             return _context.Persons.Any(p => p.Id.Equals(id));
         }
+
     }
 }
